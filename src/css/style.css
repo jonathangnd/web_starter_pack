@@ -1,0 +1,14 @@
+@import "tailwindcss";
+:root {
+    --white_tint:  #f8fbf8;
+    --black_tint: #1c1c1c;
+    --lighter_black_tint: #1c1c1c2a;
+    --test: orange;
+
+    box-sizing: border-box;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+    h1{color: var(--black_tint); font-weight: 800; text-transform: uppercase;}
+    h3{color: var(--lighter_black_tint); font-weight: 100;}
+}
+
