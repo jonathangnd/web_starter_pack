@@ -11,4 +11,56 @@
     h1{color: var(--black_tint); font-weight: 800; text-transform: uppercase;}
     h3{color: var(--lighter_black_tint); font-weight: 100;}
 }
+.loader {
+    .bar {
+        display: inline-block;
+        width: 3px;
+        height: 20px;
+        background-color: var(--black_tint);
+        border-radius: 10px;
+        animation: scale-up4 1s linear infinite;
+    }
+    .bar:nth-child(2) {
+        height: 30px;
+        margin: 0 5px;
+        animation-delay: .25s;
+    }
+    .bar:nth-child(3) {
+        height: 10px;
+        animation-delay: .5s;
+    }
+    .bar:nth-child(4) {
+        height: 15px;
+        margin: 0 0 0 5px;
+        animation-delay: .75s;
+    }
 
+    transition: transform 0.3s ease, background-color 0.3s ease, height 0.2s, width 0.2s;
+    height: 3rem; width: 3rem;
+    border-radius: 3px;
+}
+.loader:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+
+    background-color: #1c1c1c;
+    height: 5rem; width: 5rem;
+
+    .bar {
+            background-color: var(--white_tint);
+
+    }
+}
+
+
+/*Animations*/
+@keyframes scale-up4 {
+    20% {
+    background-color: var(--lighter_black_tint);
+    transform: scaleY(1.5);
+    }
+
+    40% {
+    transform: scaleY(1);
+    }
+}
