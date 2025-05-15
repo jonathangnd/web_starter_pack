@@ -1,8 +1,11 @@
 @import "tailwindcss";
 :root {
     --white_tint:  #f8fbf8;
+    --white_tint_accent:  #eeeeee;
+
     --black_tint: #1c1c1c;
-    --lighter_black_tint: #1c1c1c2a;
+    --black_tint_accent: #707276;
+
     --test: orange;
 
     box-sizing: border-box;
@@ -11,56 +14,104 @@
     h1{color: var(--black_tint); font-weight: 800; text-transform: uppercase;}
     h3{color: var(--lighter_black_tint); font-weight: 100;}
 }
-.loader {
-    .bar {
-        display: inline-block;
-        width: 3px;
-        height: 20px;
+
+
+.wrapper {
+    overflow: hidden;
+    height: 100px; width: 120px;
+    transition: height 0.3s ease, width 0.3s ease, background 0.4s ease;
+    button {
+        position: relative;
+        top: -40px;
+        transition: top 0.3s ease, color 0.3s ease;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .loader {
+        position: relative;
+        top: -30px;
+        transition: top 0.3s ease, color 0.3s ease;
+        border-radius: 3px;
+
+        .bar {
+            position: relative;
+            display: inline-block;
+            width: 3px;
+            height: 20px;
+            background-color: var(--black_tint_accent);
+            border-radius: 10px;
+            animation: scale_up 1s linear infinite;
+        }
+        .bar:nth-child(2) {
+            height: 30px;
+            margin: 0 5px;
+            animation-delay: .25s;
+        }
+        .bar:nth-child(3) {
+            height: 10px;
+            animation-delay: .5s;
+        }
+        .bar:nth-child(4) {
+            height: 15px;
+            margin: 0 0 0 5px;
+            animation-delay: .75s;
+        }
+    }
+
+    &:hover {
+        height: 80px; width: 100px;
+        border-radius: 2px;
         background-color: var(--black_tint);
-        border-radius: 10px;
-        animation: scale-up4 1s linear infinite;
-    }
-    .bar:nth-child(2) {
-        height: 30px;
-        margin: 0 5px;
-        animation-delay: .25s;
-    }
-    .bar:nth-child(3) {
-        height: 10px;
-        animation-delay: .5s;
-    }
-    .bar:nth-child(4) {
-        height: 15px;
-        margin: 0 0 0 5px;
-        animation-delay: .75s;
-    }
-
-    transition: transform 0.3s ease, background-color 0.3s ease, height 0.2s, width 0.2s;
-    height: 3rem; width: 3rem;
-    border-radius: 3px;
-}
-.loader:hover {
-    transform: scale(1.2);
-    cursor: pointer;
-
-    background-color: #1c1c1c;
-    height: 5rem; width: 5rem;
-
-    .bar {
-            background-color: var(--white_tint);
-
+        .loader {
+            top: 50px;
+            .bar {
+                color: var(--white_tint);
+            }
+        }
+        button {
+            top: 30px;
+            color: var(--white_tint);
+            font-size: 15px;
+            cursor: pointer;
+        }
     }
 }
 
 
 /*Animations*/
-@keyframes scale-up4 {
+@keyframes scale_up {
     20% {
-    background-color: var(--lighter_black_tint);
-    transform: scaleY(1.5);
+        background-color: var(--black_tint);
+        transform: scaleY(1.5);
     }
 
     40% {
-    transform: scaleY(1);
+        transform: scaleY(1);
     }
+}
+@keyframes trans_cover_animation {
+    0% {
+        width: 0%;height: 0%;
+    }
+    70% {
+        width: 10%;height: 10%;
+    }
+    100% {
+        width: 150%;height: 150%;
+    }
+}
+
+
+
+
+.active_button {
+    position: fixed;
+    background-color: var(--black_tint);
+    animation: trans_cover_animation 1.5s ease-in-out forwards;
+
+}
+
+.trans_cover {
+    border-bottom-right-radius: 100%;
+    transition: background 0s ease-in, height 1s ease-in, width 1s ease-in;
 }
